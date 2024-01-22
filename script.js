@@ -53,19 +53,6 @@ const getCoundtryData = function (countryName) {
   )
     .then(([data]) => {
       renderCountry(data);
-
-      //neighbouring country
-      const neighborCountry = data.borders?.[0];
-      if (!neighborCountry) throw new Error(`No neighbour found `);
-      // const neighborCountry = 'noCountry';
-
-      return getJSON(
-        `https://restcountries.com/v2/alpha/${neighborCountry}`,
-        "No Country found"
-      );
-    })
-    .then((neighbourData) => {
-      renderCountry(neighbourData, "neighbour");
     })
     .catch((err) => {
       renderError(err);
